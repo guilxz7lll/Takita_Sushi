@@ -10,105 +10,105 @@ const products = [
     name: "Hot Holl Philadelphia",
     category: "hot-holl",
     price: 27.90,
-    image: "imagens/salmão_hot.png"
+    image: "salmão_hot.png"
   },
   {
     id: 2,
     name: "Hot Holl Butterfly",
     category: "hot-holl",
     price: 27.90,
-    image: "imagens/hotholl2.png"
+    image: "hotholl2.png"
   },
   {
     id: 3,
     name: "Uramaki Salmão",
     category: "hossomaki",
     price: 29.90,
-    image: "imagens/uramaki.png"
+    image: "uramaki.png"
   },
   {
     id: 4,
     name: "Uramaki Camarão",
     category: "hossomaki",
     price: 29.90,
-    image: "imagens/uramakicamarão.png"
+    image: "uramakicamarão.png"
   },
   {
     id: 5,
     name: "Hossomaki Salmão",
     category: "hossomaki",
     price: 29.90,
-    image: "imagens/hossomaki.png"
+    image: "hossomaki.png"
   },
   {
     id: 6,
     name: "Temaki Salmão Cru",
     category: "temaki",
     price: 34.90,
-    image: "imagens/temaki (1).png"
+    image: "temaki (1).png"
   },
   {
     id: 7,
     name: "Temaki Camarão Cru",
     category: "temaki",
     price: 34.90,
-    image: "imagens/temakicamarão.png"
+    image: "temakicamarão.png"
   },
   {
     id: 8,
     name: "Temaki Salmão Frito",
     category: "temaki",
     price: 34.90,
-    image: "imagens/temaki3.png"
+    image: "temaki3.png"
   },
   {
     id: 9,
     name: "Temaki Camarão Frito",
     category: "temaki",
     price: 34.90,
-    image: "imagens/temakihot.png"
+    image: "temakihot.png"
   },
   {
     id: 10,
     name: "P Mista",
     category: "barca",
     price: 59.90,
-    image: "imagens/barcaG.png"
+    image: "barcaG.png"
   },
   {
     id: 11,
     name: "M Mista",
     category: "barca",
     price: 79.90,
-    image: "imagens/barcaG.png"
+    image: "barcaG.png"
   },
   {
     id: 12,
     name: "G Mista",
     category: "barca",
     price: 129.90,
-    image: "imagens/barcaG.png"
+    image: "barcaG.png"
   },
   {
     id: 13,
     name: "Fanta Uva 2L",
     category: "bebidas",
     price: 14.90,
-    image: "imagens/fantauva.png"
+    image: "fantauva.png"
   },
   {
     id: 14,
     name: "Fanta Laranja 2L",
     category: "bebidas",
     price: 14.90,
-    image: "imagens/fanta.png"
+    image: "fanta.png"
   },
   {
     id: 15,
     name: "Guaraná Baré 2L",
     category: "bebidas",
     price: 7.90,
-    image: "imagens/bare.png"
+    image: "bare.png"
   }
 ];
 
