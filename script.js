@@ -1,0 +1,687 @@
+// ================= CONFIGURAÇÃO =================
+// Número do WhatsApp do Takita Sushi.
+// Formato: 55 + DDD + número.
+const WHATSAPP_NUMBER = "5592985194693";
+
+// ================= PRODUTOS =================
+const products = [
+  {
+    id: 1,
+    name: "Hot Holl Philadelphia",
+    category: "hot-holl",
+    price: 27.90,
+    image: "imagens/salmão_hot.png"
+  },
+  {
+    id: 2,
+    name: "Hot Holl Butterfly",
+    category: "hot-holl",
+    price: 27.90,
+    image: "imagens/hotholl2.png"
+  },
+  {
+    id: 3,
+    name: "Uramaki Salmão",
+    category: "hossomaki",
+    price: 29.90,
+    image: "imagens/uramaki.png"
+  },
+  {
+    id: 4,
+    name: "Uramaki Camarão",
+    category: "hossomaki",
+    price: 29.90,
+    image: "imagens/uramakicamarão.png"
+  },
+  {
+    id: 5,
+    name: "Hossomaki Salmão",
+    category: "hossomaki",
+    price: 29.90,
+    image: "imagens/hossomaki.png"
+  },
+  {
+    id: 6,
+    name: "Temaki Salmão Cru",
+    category: "temaki",
+    price: 34.90,
+    image: "imagens/temaki (1).png"
+  },
+  {
+    id: 7,
+    name: "Temaki Camarão Cru",
+    category: "temaki",
+    price: 34.90,
+    image: "imagens/temakicamarão.png"
+  },
+  {
+    id: 8,
+    name: "Temaki Salmão Frito",
+    category: "temaki",
+    price: 34.90,
+    image: "imagens/temaki3.png"
+  },
+  {
+    id: 9,
+    name: "Temaki Camarão Frito",
+    category: "temaki",
+    price: 34.90,
+    image: "imagens/temakihot.png"
+  },
+  {
+    id: 10,
+    name: "P Mista",
+    category: "barca",
+    price: 59.90,
+    image: "imagens/barcaG.png"
+  },
+  {
+    id: 11,
+    name: "M Mista",
+    category: "barca",
+    price: 79.90,
+    image: "imagens/barcaG.png"
+  },
+  {
+    id: 12,
+    name: "G Mista",
+    category: "barca",
+    price: 129.90,
+    image: "imagens/barcaG.png"
+  },
+  {
+    id: 13,
+    name: "Fanta Uva 2L",
+    category: "bebidas",
+    price: 14.90,
+    image: "imagens/fantauva.png"
+  },
+  {
+    id: 14,
+    name: "Fanta Laranja 2L",
+    category: "bebidas",
+    price: 14.90,
+    image: "imagens/fanta.png"
+  },
+  {
+    id: 15,
+    name: "Guaraná Baré 2L",
+    category: "bebidas",
+    price: 7.90,
+    image: "imagens/bare.png"
+  }
+];
+
+// ================= ESTADO =================
+let cart = JSON.parse(localStorage.getItem("takita_cart")) || [];
+
+// ================= ELEMENTOS =================
+const categoryButtons = document.querySelectorAll(".category-btn");
+const addButtons = document.querySelectorAll(".add-btn");
+
+const openCartBtn = document.getElementById("openCartBtn");
+const closeCartBtn = document.getElementById("closeCartBtn");
+const cartDrawer = document.getElementById("cartDrawer");
+const overlay = document.getElementById("overlay");
+
+const cartItems = document.getElementById("cartItems");
+const cartCount = document.getElementById("cartCount");
+const cartTotal = document.getElementById("cartTotal");
+const clearCartBtn = document.getElementById("clearCartBtn");
+const checkoutBtn = document.getElementById("checkoutBtn");
+
+const checkoutModal = document.getElementById("checkoutModal");
+const closeModalBtn = document.getElementById("closeModalBtn");
+const checkoutForm = document.getElementById("checkoutForm");
+
+const getLocationBtn = document.getElementById("getLocationBtn");
+const customerLocation = document.getElementById("customerLocation");
+
+const toast = document.getElementById("toast");
+
+// ================= FORMATAR PREÇO =================
+function formatCurrency(value) {
+  if (typeof value !== "number") {
+    return "Consultar";
+  }
+
+  return value.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  });
+}
+
+// ================= SALVAR CARRINHO =================
+function saveCart() {
+  localStorage.setItem("takita_cart", JSON.stringify(cart));
+}
+
+// ================= FILTRO DE CATEGORIAS =================
+categoryButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const selectedCategory = button.dataset.category;
+    const productCards = document.querySelectorAll(".product-card");
+
+    categoryButtons.forEach((btn) => {
+      btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    productCards.forEach((card) => {
+      const productCategory = card.dataset.category;
+
+      if (selectedCategory === "todos" || selectedCategory === productCategory) {
+        card.classList.remove("hidden");
+      } else {
+        card.classList.add("hidden");
+      }
+    });
+  });
+});
+
+// ================= ADICIONAR AO CARRINHO =================
+addButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const productId = Number(button.dataset.id);
+    addToCart(productId);
+  });
+});
+
+function addToCart(productId) {
+  const product = products.find((item) => item.id === productId);
+
+  if (!product) {
+    showToast("Produto não encontrado.");
+    return;
+  }
+
+  const itemInCart = cart.find((item) => item.id === productId);
+
+  if (itemInCart) {
+    itemInCart.quantity += 1;
+  } else {
+    cart.push({
+      ...product,
+      quantity: 1
+    });
+  }
+
+  saveCart();
+  renderCart();
+  showToast("Produto adicionado ao carrinho.");
+}
+
+// ================= RENDERIZAR CARRINHO =================
+function renderCart() {
+  if (!cartItems) return;
+
+  cartItems.innerHTML = "";
+
+  if (cart.length === 0) {
+    cartItems.innerHTML = `
+      <p class="empty-cart">
+        Seu carrinho está vazio.
+      </p>
+    `;
+  } else {
+    cart.forEach((item) => {
+      const itemTotal = typeof item.price === "number"
+        ? formatCurrency(item.price * item.quantity)
+        : "Consultar";
+
+      const cartItem = document.createElement("div");
+      cartItem.classList.add("cart-item");
+
+      cartItem.innerHTML = `
+        <div class="cart-item-image">
+          <img src="${item.image}" alt="${item.name}" />
+        </div>
+
+        <div class="cart-item-info">
+          <h4>${item.name}</h4>
+          <p>${itemTotal}</p>
+
+          <div class="cart-controls">
+            <button
+              class="qty-btn"
+              type="button"
+              data-action="decrease"
+              data-id="${item.id}"
+            >
+              -
+            </button>
+
+            <span>${item.quantity}</span>
+
+            <button
+              class="qty-btn"
+              type="button"
+              data-action="increase"
+              data-id="${item.id}"
+            >
+              +
+            </button>
+
+            <button
+              class="remove-btn"
+              type="button"
+              data-action="remove"
+              data-id="${item.id}"
+            >
+              remover
+            </button>
+          </div>
+        </div>
+      `;
+
+      cartItems.appendChild(cartItem);
+    });
+  }
+
+  updateCartSummary();
+}
+
+// ================= CONTROLES DO CARRINHO =================
+if (cartItems) {
+  cartItems.addEventListener("click", (event) => {
+    const button = event.target.closest("button");
+
+    if (!button) return;
+
+    const productId = Number(button.dataset.id);
+    const action = button.dataset.action;
+
+    if (action === "increase") {
+      increaseQuantity(productId);
+    }
+
+    if (action === "decrease") {
+      decreaseQuantity(productId);
+    }
+
+    if (action === "remove") {
+      removeFromCart(productId);
+    }
+  });
+}
+
+function increaseQuantity(productId) {
+  const item = cart.find((product) => product.id === productId);
+
+  if (!item) return;
+
+  item.quantity += 1;
+
+  saveCart();
+  renderCart();
+}
+
+function decreaseQuantity(productId) {
+  const item = cart.find((product) => product.id === productId);
+
+  if (!item) return;
+
+  if (item.quantity > 1) {
+    item.quantity -= 1;
+  } else {
+    cart = cart.filter((product) => product.id !== productId);
+  }
+
+  saveCart();
+  renderCart();
+}
+
+function removeFromCart(productId) {
+  cart = cart.filter((product) => product.id !== productId);
+
+  saveCart();
+  renderCart();
+  showToast("Produto removido do carrinho.");
+}
+
+function clearCart() {
+  if (cart.length === 0) {
+    showToast("O carrinho já está vazio.");
+    return;
+  }
+
+  cart = [];
+
+  saveCart();
+  renderCart();
+  showToast("Carrinho limpo.");
+}
+
+// ================= RESUMO DO CARRINHO =================
+function updateCartSummary() {
+  if (!cartCount || !cartTotal) return;
+
+  const totalQuantity = cart.reduce((sum, item) => {
+    return sum + item.quantity;
+  }, 0);
+
+  const totalValue = cart.reduce((sum, item) => {
+    if (typeof item.price !== "number") {
+      return sum;
+    }
+
+    return sum + item.price * item.quantity;
+  }, 0);
+
+  const hasConsultItem = cart.some((item) => typeof item.price !== "number");
+
+  cartCount.textContent = totalQuantity;
+
+  if (cart.length === 0) {
+    cartTotal.textContent = "R$ 0,00";
+  } else if (hasConsultItem && totalValue > 0) {
+    cartTotal.textContent = `${formatCurrency(totalValue)} + consultar`;
+  } else if (hasConsultItem) {
+    cartTotal.textContent = "Consultar";
+  } else {
+    cartTotal.textContent = formatCurrency(totalValue);
+  }
+}
+
+// ================= ABRIR E FECHAR CARRINHO =================
+function openCart() {
+  if (!cartDrawer || !overlay) return;
+
+  cartDrawer.classList.add("active");
+  overlay.classList.add("active");
+  document.body.classList.add("cart-open");
+}
+
+function closeCart() {
+  if (!cartDrawer || !overlay) return;
+
+  cartDrawer.classList.remove("active");
+
+  if (!checkoutModal || !checkoutModal.classList.contains("active")) {
+    overlay.classList.remove("active");
+    document.body.classList.remove("cart-open");
+  }
+}
+
+// ================= ABRIR E FECHAR MODAL =================
+function openCheckoutModal() {
+  if (cart.length === 0) {
+    showToast("Adicione um produto antes de finalizar.");
+    return;
+  }
+
+  if (!checkoutModal || !overlay || !cartDrawer) return;
+
+  checkoutModal.classList.add("active");
+  overlay.classList.add("active");
+  cartDrawer.classList.remove("active");
+  document.body.classList.add("cart-open");
+}
+
+function closeCheckoutModal() {
+  if (!checkoutModal || !overlay || !cartDrawer) return;
+
+  checkoutModal.classList.remove("active");
+
+  if (!cartDrawer.classList.contains("active")) {
+    overlay.classList.remove("active");
+    document.body.classList.remove("cart-open");
+  }
+}
+
+function closeAllPanels() {
+  if (cartDrawer) {
+    cartDrawer.classList.remove("active");
+  }
+
+  if (checkoutModal) {
+    checkoutModal.classList.remove("active");
+  }
+
+  if (overlay) {
+    overlay.classList.remove("active");
+  }
+
+  document.body.classList.remove("cart-open");
+}
+
+// ================= FINALIZAR PEDIDO =================
+if (checkoutForm) {
+  checkoutForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (cart.length === 0) {
+      showToast("Seu carrinho está vazio.");
+      return;
+    }
+
+    const customerName = document.getElementById("customerName").value.trim();
+    const customerPhone = document.getElementById("customerPhone").value.trim();
+    const customerAddress = document.getElementById("customerAddress").value.trim();
+    const locationLink = document.getElementById("customerLocation")?.value || "";
+    const paymentMethod = document.getElementById("paymentMethod").value;
+    const customerNote = document.getElementById("customerNote").value.trim();
+
+    const totalValue = cart.reduce((sum, item) => {
+      if (typeof item.price !== "number") {
+        return sum;
+      }
+
+      return sum + item.price * item.quantity;
+    }, 0);
+
+    const hasConsultItem = cart.some((item) => typeof item.price !== "number");
+
+    const orderItems = cart
+      .map((item) => {
+        const itemPrice = typeof item.price === "number"
+          ? formatCurrency(item.price * item.quantity)
+          : "Consultar";
+
+        return `${item.quantity}x ${item.name} - ${itemPrice}`;
+      })
+      .join("\n");
+
+    let totalText = formatCurrency(totalValue);
+
+    if (hasConsultItem && totalValue > 0) {
+      totalText = `${formatCurrency(totalValue)} + item a consultar`;
+    }
+
+    if (hasConsultItem && totalValue === 0) {
+      totalText = "Consultar";
+    }
+
+    const message = `
+Olá! Quero fazer um pedido no Takita Sushi.
+
+Itens do pedido:
+${orderItems}
+
+Total: ${totalText}
+
+Dados do cliente:
+Nome: ${customerName}
+Telefone: ${customerPhone}
+Endereço: ${customerAddress}Endereço: ${customerAddress}
+Localização: ${locationLink || ""}
+Pagamento: ${paymentMethod}
+Observação: ${customerNote || "Nenhuma"}
+    `.trim();
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+
+    window.open(whatsappUrl, "_blank");
+
+    cart = [];
+    saveCart();
+    renderCart();
+    checkoutForm.reset();
+    closeAllPanels();
+  });
+}
+
+// ================= TOAST =================
+function showToast(message) {
+  if (!toast) return;
+
+  toast.textContent = message;
+  toast.classList.add("active");
+
+  setTimeout(() => {
+    toast.classList.remove("active");
+  }, 2300);
+}
+
+// ================= CARROSSEL DE DESTAQUE DA HOME =================
+const featuredItems = [
+  {
+    image: "imagens/barcaG.png",
+    tag: "Destaque",
+    name: "G Mista",
+    price: "R$129,90",
+    info: "Contém 55 un."
+  },
+  {
+    image: "imagens/salmão_hot.png",
+    tag: "Mais pedido",
+    name: "Hot Holl",
+    price: "R$27,90",
+    info: "Philadelphia"
+  },
+  {
+    image: "imagens/temaki (1).png",
+    tag: "Especial",
+    name: "Temaki",
+    price: "R$34,90",
+    info: "1 unidade"
+  }
+];
+
+const featuredImage = document.getElementById("featuredImage");
+const featuredTag = document.getElementById("featuredTag");
+const featuredName = document.getElementById("featuredName");
+const featuredPrice = document.getElementById("featuredPrice");
+const featuredInfo = document.getElementById("featuredInfo");
+const featuredDots = document.querySelectorAll("#featuredDots button");
+
+let currentFeaturedIndex = 0;
+let featuredInterval;
+
+function updateFeatured(index) {
+  const item = featuredItems[index];
+
+  if (!item || !featuredImage) return;
+
+  currentFeaturedIndex = index;
+
+  featuredImage.classList.add("changing");
+
+  setTimeout(() => {
+    featuredImage.src = item.image;
+    featuredImage.alt = item.name;
+
+    if (featuredTag) featuredTag.textContent = item.tag;
+    if (featuredName) featuredName.textContent = item.name;
+    if (featuredPrice) featuredPrice.textContent = item.price;
+    if (featuredInfo) featuredInfo.textContent = item.info;
+
+    featuredDots.forEach((dot) => {
+      dot.classList.remove("active");
+    });
+
+    if (featuredDots[index]) {
+      featuredDots[index].classList.add("active");
+    }
+
+    featuredImage.classList.remove("changing");
+  }, 220);
+}
+
+function nextFeatured() {
+  const nextIndex = (currentFeaturedIndex + 1) % featuredItems.length;
+  updateFeatured(nextIndex);
+}
+
+function startFeaturedCarousel() {
+  featuredInterval = setInterval(nextFeatured, 3500);
+}
+
+function resetFeaturedCarousel() {
+  clearInterval(featuredInterval);
+  startFeaturedCarousel();
+}
+
+featuredDots.forEach((dot) => {
+  dot.addEventListener("click", () => {
+    const index = Number(dot.dataset.slide);
+
+    updateFeatured(index);
+    resetFeaturedCarousel();
+  });
+});
+
+if (featuredImage) {
+  startFeaturedCarousel();
+}
+
+// ================= EVENTOS =================
+if (openCartBtn) {
+  openCartBtn.addEventListener("click", openCart);
+}
+
+if (closeCartBtn) {
+  closeCartBtn.addEventListener("click", closeCart);
+}
+
+if (clearCartBtn) {
+  clearCartBtn.addEventListener("click", clearCart);
+}
+
+if (checkoutBtn) {
+  checkoutBtn.addEventListener("click", openCheckoutModal);
+}
+
+if (closeModalBtn) {
+  closeModalBtn.addEventListener("click", closeCheckoutModal);
+}
+
+if (overlay) {
+  overlay.addEventListener("click", closeAllPanels);
+}
+
+if (getLocationBtn) {
+  getLocationBtn.addEventListener("click", () => {
+    if (!navigator.geolocation) {
+      showToast("Seu navegador não suporta localização.");
+      return;
+    }
+
+    showToast("Buscando localização...");
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        const mapsLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
+
+        customerLocation.value = mapsLink;
+
+        showToast("Localização adicionada ao pedido.");
+      },
+      () => {
+        showToast("Não foi possível acessar sua localização.");
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0
+      }
+    );
+  });
+}
+// ================= INICIALIZAÇÃO =================
+renderCart();

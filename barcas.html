@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Takita Sushi | Barcas</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header">
+    <nav class="navbar">
+
+      <a href="index.html" class="logo">
+        <div class="logo-mark">
+          <img src="imagens/logo.png" alt="Takita Sushi" />
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="cardapio.html">Cardápio</a></li>
+        <li><a href="barcas.html" class="active">Barcas</a></li>
+        <li><a href="personalizados.html">Eventos</a></li>
+      </ul>
+
+      <button class="cart-button" id="openCartBtn" type="button">
+        <i data-lucide="shopping-bag"></i>
+        <span id="cartCount">0</span>
+      </button>
+
+    </nav>
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main>
+
+    <!-- ================= BARCAS ================= -->
+    <section class="categories-section">
+      <div class="section-title">
+        <span>Barcas</span>
+        <h2>Barcas Takita Sushi</h2>
+        <p>Opções mistas para compartilhar, eventos e aniversários.</p>
+      </div>
+    </section>
+
+    <section class="menu-section">
+      <div class="menu-grid">
+
+        <article class="product-card product-featured" data-category="barca">
+          <div class="product-image">
+            <img src="imagens/barcaG.png" alt="Barca P Mista" />
+          </div>
+
+          <div class="product-info">
+            <span>Barca</span>
+            <h3>P Mista</h3>
+            <p>Barca mista com 20 unidades. Boa para um pedido menor.</p>
+
+            <div class="product-footer">
+              <strong>R$59,90</strong>
+              <button class="add-btn" type="button" data-id="10">
+                <i data-lucide="plus"></i>
+                Adicionar
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card product-featured" data-category="barca">
+          <div class="product-image">
+            <img src="imagens/barcaG.png" alt="Barca M Mista" />
+          </div>
+
+          <div class="product-info">
+            <span>Barca</span>
+            <h3>M Mista</h3>
+            <p>Barca mista com 30 unidades. Ideal para dividir.</p>
+
+            <div class="product-footer">
+              <strong>R$79,90</strong>
+              <button class="add-btn" type="button" data-id="11">
+                <i data-lucide="plus"></i>
+                Adicionar
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card product-featured big-card" data-category="barca">
+          <div class="product-image">
+            <img src="imagens/barcaG.png" alt="Barca G Mista" />
+          </div>
+
+          <div class="product-info">
+            <span>Mais pedida</span>
+            <h3>G Mista</h3>
+            <p>Barca mista com 55 unidades. Boa para família, eventos e aniversários.</p>
+
+            <div class="product-footer">
+              <strong>R$129,90</strong>
+              <button class="add-btn" type="button" data-id="12">
+                <i data-lucide="plus"></i>
+                Adicionar
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ================= FAIXA DE ENCOMENDAS ================= -->
+    <section class="order-banner">
+      <div>
+        <span>Encomendas</span>
+        <h2>Aceitamos encomendas para aniversários</h2>
+        <p>
+          Monte sua barca ou combinado especial para eventos, reuniões e comemorações.
+        </p>
+      </div>
+
+      <a href="personalizados.html" class="btn btn-primary">
+        <i data-lucide="message-circle"></i>
+        Fazer encomenda
+      </a>
+    </section>
+
+  </main>
+
+  <!-- ================= CARRINHO ================= -->
+  <aside class="cart-drawer" id="cartDrawer">
+
+    <div class="cart-header">
+      <div>
+        <span>Seu pedido</span>
+        <h2>Carrinho</h2>
+      </div>
+
+      <button class="close-btn" id="closeCartBtn" type="button">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+
+    <div class="cart-items" id="cartItems">
+      <p class="empty-cart">Seu carrinho está vazio.</p>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <strong id="cartTotal">R$ 0,00</strong>
+      </div>
+
+      <button class="btn btn-primary full" id="checkoutBtn" type="button">
+        <i data-lucide="send"></i>
+        Finalizar pedido
+      </button>
+
+      <button class="clear-cart" id="clearCartBtn" type="button">
+        Limpar carrinho
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- ================= MODAL ================= -->
+  <section class="checkout-modal" id="checkoutModal">
+    <div class="modal-content">
+
+      <button class="close-btn modal-close" id="closeModalBtn" type="button">
+        <i data-lucide="x"></i>
+      </button>
+
+      <span>Finalização</span>
+      <h2>Dados do pedido</h2>
+
+      <form id="checkoutForm">
+
+        <label for="customerName">
+          Nome
+          <input type="text" id="customerName" placeholder="Digite seu nome" required />
+        </label>
+
+        <label for="customerPhone">
+          Telefone
+          <input type="tel" id="customerPhone" placeholder="Digite seu telefone" required />
+        </label>
+
+        <label for="customerAddress">
+          Endereço
+          <input type="text" id="customerAddress" placeholder="Rua, número e bairro" required />
+        </label>
+
+        <label for="paymentMethod">
+          Forma de pagamento
+          <select id="paymentMethod" required>
+            <option value="">Selecione</option>
+            <option value="Pix">Pix</option>
+            <option value="Dinheiro">Dinheiro</option>
+            <option value="Cartão na entrega">Cartão na entrega</option>
+          </select>
+        </label>
+
+        <label for="customerNote">
+          Observação
+          <textarea id="customerNote" placeholder="Ex: retirar algo, mandar molho extra..."></textarea>
+        </label>
+
+        <button class="btn btn-primary full" type="submit">
+          <i data-lucide="message-circle"></i>
+          Enviar no WhatsApp
+        </button>
+
+      </form>
+
+    </div>
+  </section>
+
+  <div class="overlay" id="overlay"></div>
+
+  <div class="toast" id="toast">Produto adicionado ao carrinho.</div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <strong>Takita Sushi</strong>
+    <p>O melhor sushi da cidade!</p>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="script.js"></script>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
