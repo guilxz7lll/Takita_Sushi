@@ -538,26 +538,27 @@ function showToast(message) {
 // ================= CARROSSEL DE DESTAQUE DA HOME =================
 const featuredItems = [
   {
-    image: "imagens/barcaG.png",
+    image: "barcaG.png",
     tag: "Destaque",
     name: "G Mista",
     price: "R$129,90",
     info: "Contém 55 un."
   },
   {
-    image: "imagens/salmão_hot.png",
+    image: "salmão_hot.png",
     tag: "Mais pedido",
     name: "Hot Holl",
     price: "R$27,90",
     info: "Philadelphia"
   },
   {
-    image: "imagens/temaki (1).png",
+    image: "temaki (1).png",
     tag: "Especial",
     name: "Temaki",
     price: "R$34,90",
     info: "1 unidade"
-  }
+  },
+  
 ];
 
 const featuredImage = document.getElementById("featuredImage");
