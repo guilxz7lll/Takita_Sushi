@@ -558,7 +558,7 @@ const featuredItems = [
     price: "R$34,90",
     info: "1 unidade"
   },
-  
+
 ];
 
 const featuredImage = document.getElementById("featuredImage");
@@ -653,10 +653,24 @@ if (overlay) {
   overlay.addEventListener("click", closeAllPanels);
 }
 
+// ================= LOCALIZAÇÃO DO CLIENTE =================
+const getLocationBtn = document.getElementById("getLocationBtn");
+const customerLocation = document.getElementById("customerLocation");
+const customerAddressInput = document.getElementById("customerAddress");
+
 if (getLocationBtn) {
   getLocationBtn.addEventListener("click", () => {
+    console.log("Botão de localização clicado.");
+
     if (!navigator.geolocation) {
       showToast("Seu navegador não suporta localização.");
+      console.log("Geolocation não existe no navegador.");
+      return;
+    }
+
+    if (!window.isSecureContext) {
+      showToast("Abra o site com HTTPS.");
+      console.log("Site não está em contexto seguro:", window.location.href);
       return;
     }
 
@@ -664,21 +678,41 @@ if (getLocationBtn) {
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
+        console.log("Localização encontrada:", position);
+
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
         const mapsLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
 
-        customerLocation.value = mapsLink;
+        if (customerLocation) {
+          customerLocation.value = mapsLink;
+        }
 
-        showToast("Localização adicionada ao pedido.");
+        if (customerAddressInput) {
+          customerAddressInput.value = "Localização enviada pelo mapa";
+        }
+
+        showToast("Localização adicionada.");
       },
-      () => {
-        showToast("Não foi possível acessar sua localização.");
+
+      (error) => {
+        console.log("Erro ao pegar localização:", error);
+
+        if (error.code === error.PERMISSION_DENIED) {
+          showToast("Permissão de localização negada.");
+        } else if (error.code === error.POSITION_UNAVAILABLE) {
+          showToast("Localização indisponível.");
+        } else if (error.code === error.TIMEOUT) {
+          showToast("Tempo esgotado. Tente novamente.");
+        } else {
+          showToast("Erro ao buscar localização.");
+        }
       },
+
       {
         enableHighAccuracy: true,
-        timeout: 10000,
+        timeout: 20000,
         maximumAge: 0
       }
     );
