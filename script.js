@@ -557,8 +557,7 @@ const featuredItems = [
     name: "Temaki",
     price: "R$34,90",
     info: "1 unidade"
-  },
-
+  }
 ];
 
 const featuredImage = document.getElementById("featuredImage");
@@ -653,9 +652,6 @@ if (overlay) {
   overlay.addEventListener("click", closeAllPanels);
 }
 
-// ================= LOCALIZAÇÃO DO CLIENTE =================
-const getLocationBtn = document.getElementById("getLocationBtn");
-const customerLocation = document.getElementById("customerLocation");
 const customerAddressInput = document.getElementById("customerAddress");
 
 if (getLocationBtn) {
