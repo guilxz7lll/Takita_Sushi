@@ -504,7 +504,7 @@ Total: ${totalText}
 Dados do cliente:
 Nome: ${customerName}
 Telefone: ${customerPhone}
-Endereço: ${customerAddress}Endereço: ${customerAddress}
+Endereço: ${customerAddress}
 Localização: ${locationLink || ""}
 Pagamento: ${paymentMethod}
 Observação: ${customerNote || "Nenhuma"}
@@ -652,7 +652,7 @@ if (overlay) {
   overlay.addEventListener("click", closeAllPanels);
 }
 
-const customerAddressInput = document.getElementById("customerAddress");
+const customerAddressInput = document.getElementById("customerAddress"); 
 
 if (getLocationBtn) {
   getLocationBtn.addEventListener("click", () => {
