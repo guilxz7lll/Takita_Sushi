@@ -505,6 +505,7 @@ Dados do cliente:
 Nome: ${customerName}
 Telefone: ${customerPhone}
 Endereço: ${customerAddress}
+Endereço no mapa: ${locationLink ? "Sim" : "Não"}
 Localização: ${locationLink || ""}
 Pagamento: ${paymentMethod}
 Observação: ${customerNote || "Nenhuma"}
