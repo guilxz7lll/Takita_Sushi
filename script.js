@@ -171,7 +171,10 @@ categoryButtons.forEach((button) => {
     productCards.forEach((card) => {
       const productCategory = card.dataset.category;
 
-      if (selectedCategory === "todos" || selectedCategory === productCategory) {
+      if (
+        selectedCategory === "todos" ||
+        selectedCategory === productCategory
+      ) {
         card.classList.remove("hidden");
       } else {
         card.classList.add("hidden");
@@ -226,9 +229,10 @@ function renderCart() {
     `;
   } else {
     cart.forEach((item) => {
-      const itemTotal = typeof item.price === "number"
-        ? formatCurrency(item.price * item.quantity)
-        : "Consultar";
+      const itemTotal =
+        typeof item.price === "number"
+          ? formatCurrency(item.price * item.quantity)
+          : "Consultar";
 
       const cartItem = document.createElement("div");
       cartItem.classList.add("cart-item");
@@ -337,6 +341,7 @@ function removeFromCart(productId) {
 
   saveCart();
   renderCart();
+
   showToast("Produto removido do carrinho.");
 }
 
@@ -350,6 +355,7 @@ function clearCart() {
 
   saveCart();
   renderCart();
+
   showToast("Carrinho limpo.");
 }
 
@@ -369,14 +375,17 @@ function updateCartSummary() {
     return sum + item.price * item.quantity;
   }, 0);
 
-  const hasConsultItem = cart.some((item) => typeof item.price !== "number");
+  const hasConsultItem = cart.some(
+    (item) => typeof item.price !== "number"
+  );
 
   cartCount.textContent = totalQuantity;
 
   if (cart.length === 0) {
     cartTotal.textContent = "R$ 0,00";
   } else if (hasConsultItem && totalValue > 0) {
-    cartTotal.textContent = `${formatCurrency(totalValue)} + consultar`;
+    cartTotal.textContent =
+      `${formatCurrency(totalValue)} + consultar`;
   } else if (hasConsultItem) {
     cartTotal.textContent = "Consultar";
   } else {
@@ -390,6 +399,7 @@ function openCart() {
 
   cartDrawer.classList.add("active");
   overlay.classList.add("active");
+
   document.body.classList.add("cart-open");
 }
 
@@ -398,7 +408,10 @@ function closeCart() {
 
   cartDrawer.classList.remove("active");
 
-  if (!checkoutModal || !checkoutModal.classList.contains("active")) {
+  if (
+    !checkoutModal ||
+    !checkoutModal.classList.contains("active")
+  ) {
     overlay.classList.remove("active");
     document.body.classList.remove("cart-open");
   }
@@ -415,7 +428,9 @@ function openCheckoutModal() {
 
   checkoutModal.classList.add("active");
   overlay.classList.add("active");
+
   cartDrawer.classList.remove("active");
+
   document.body.classList.add("cart-open");
 }
 
@@ -456,12 +471,39 @@ if (checkoutForm) {
       return;
     }
 
-    const customerName = document.getElementById("customerName").value.trim();
-    const customerPhone = document.getElementById("customerPhone").value.trim();
-    const customerAddress = document.getElementById("customerAddress").value.trim();
-    const locationLink = document.getElementById("customerLocation")?.value || "";
-    const paymentMethod = document.getElementById("paymentMethod").value;
-    const customerNote = document.getElementById("customerNote").value.trim();
+    const customerName = document
+      .getElementById("customerName")
+      .value.trim();
+
+    const customerPhone = document
+      .getElementById("customerPhone")
+      .value.trim();
+
+    const customerAddress = document
+      .getElementById("customerAddress")
+      .value.trim();
+
+    const customerLocation = document
+      .getElementById("customerLocation")
+      ?.value.trim() || "";
+
+    const paymentMethod = document
+      .getElementById("paymentMethod")
+      .value;
+
+    const customerNote = document
+      .getElementById("customerNote")
+      .value.trim();
+
+    if (
+      !customerName ||
+      !customerPhone ||
+      !customerAddress ||
+      !paymentMethod
+    ) {
+      showToast("Preencha os campos obrigatórios.");
+      return;
+    }
 
     const totalValue = cart.reduce((sum, item) => {
       if (typeof item.price !== "number") {
@@ -471,13 +513,16 @@ if (checkoutForm) {
       return sum + item.price * item.quantity;
     }, 0);
 
-    const hasConsultItem = cart.some((item) => typeof item.price !== "number");
+    const hasConsultItem = cart.some(
+      (item) => typeof item.price !== "number"
+    );
 
     const orderItems = cart
       .map((item) => {
-        const itemPrice = typeof item.price === "number"
-          ? formatCurrency(item.price * item.quantity)
-          : "Consultar";
+        const itemPrice =
+          typeof item.price === "number"
+            ? formatCurrency(item.price * item.quantity)
+            : "Consultar";
 
         return `${item.quantity}x ${item.name} - ${itemPrice}`;
       })
@@ -486,7 +531,8 @@ if (checkoutForm) {
     let totalText = formatCurrency(totalValue);
 
     if (hasConsultItem && totalValue > 0) {
-      totalText = `${formatCurrency(totalValue)} + item a consultar`;
+      totalText =
+        `${formatCurrency(totalValue)} + item a consultar`;
     }
 
     if (hasConsultItem && totalValue === 0) {
@@ -504,22 +550,39 @@ Total: ${totalText}
 Dados do cliente:
 Nome: ${customerName}
 Telefone: ${customerPhone}
-Endereço: ${customerAddress}
-Endereço no mapa: ${locationLink ? "Sim" : "Não"}
-Localização: ${locationLink || ""}
-Pagamento: ${paymentMethod}
-Observação: ${customerNote || "Nenhuma"}
-    `.trim();
 
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+Endereço:
+${customerAddress}
+
+${
+  customerLocation
+    ? `Localização:
+${customerLocation}`
+    : ""
+}
+
+Pagamento:
+${paymentMethod}
+
+Observação:
+${customerNote || "Nenhuma"}
+`.trim();
+
+    const encodedMessage =
+      encodeURIComponent(message);
+
+    const whatsappUrl =
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
 
     window.open(whatsappUrl, "_blank");
 
     cart = [];
+
     saveCart();
     renderCart();
+
     checkoutForm.reset();
+
     closeAllPanels();
   });
 }
@@ -536,7 +599,7 @@ function showToast(message) {
   }, 2300);
 }
 
-// ================= CARROSSEL DE DESTAQUE DA HOME =================
+// ================= CARROSSEL DE DESTAQUE =================
 const featuredItems = [
   {
     image: "barcaG.png",
@@ -561,12 +624,23 @@ const featuredItems = [
   }
 ];
 
-const featuredImage = document.getElementById("featuredImage");
-const featuredTag = document.getElementById("featuredTag");
-const featuredName = document.getElementById("featuredName");
-const featuredPrice = document.getElementById("featuredPrice");
-const featuredInfo = document.getElementById("featuredInfo");
-const featuredDots = document.querySelectorAll("#featuredDots button");
+const featuredImage =
+  document.getElementById("featuredImage");
+
+const featuredTag =
+  document.getElementById("featuredTag");
+
+const featuredName =
+  document.getElementById("featuredName");
+
+const featuredPrice =
+  document.getElementById("featuredPrice");
+
+const featuredInfo =
+  document.getElementById("featuredInfo");
+
+const featuredDots =
+  document.querySelectorAll("#featuredDots button");
 
 let currentFeaturedIndex = 0;
 let featuredInterval;
@@ -584,10 +658,21 @@ function updateFeatured(index) {
     featuredImage.src = item.image;
     featuredImage.alt = item.name;
 
-    if (featuredTag) featuredTag.textContent = item.tag;
-    if (featuredName) featuredName.textContent = item.name;
-    if (featuredPrice) featuredPrice.textContent = item.price;
-    if (featuredInfo) featuredInfo.textContent = item.info;
+    if (featuredTag) {
+      featuredTag.textContent = item.tag;
+    }
+
+    if (featuredName) {
+      featuredName.textContent = item.name;
+    }
+
+    if (featuredPrice) {
+      featuredPrice.textContent = item.price;
+    }
+
+    if (featuredInfo) {
+      featuredInfo.textContent = item.info;
+    }
 
     featuredDots.forEach((dot) => {
       dot.classList.remove("active");
@@ -602,12 +687,18 @@ function updateFeatured(index) {
 }
 
 function nextFeatured() {
-  const nextIndex = (currentFeaturedIndex + 1) % featuredItems.length;
+  const nextIndex =
+    (currentFeaturedIndex + 1) %
+    featuredItems.length;
+
   updateFeatured(nextIndex);
 }
 
 function startFeaturedCarousel() {
-  featuredInterval = setInterval(nextFeatured, 3500);
+  featuredInterval = setInterval(
+    nextFeatured,
+    3500
+  );
 }
 
 function resetFeaturedCarousel() {
@@ -620,6 +711,7 @@ featuredDots.forEach((dot) => {
     const index = Number(dot.dataset.slide);
 
     updateFeatured(index);
+
     resetFeaturedCarousel();
   });
 });
@@ -642,66 +734,63 @@ if (clearCartBtn) {
 }
 
 if (checkoutBtn) {
-  checkoutBtn.addEventListener("click", openCheckoutModal);
+  checkoutBtn.addEventListener(
+    "click",
+    openCheckoutModal
+  );
 }
 
 if (closeModalBtn) {
-  closeModalBtn.addEventListener("click", closeCheckoutModal);
+  closeModalBtn.addEventListener(
+    "click",
+    closeCheckoutModal
+  );
 }
 
 if (overlay) {
   overlay.addEventListener("click", closeAllPanels);
 }
 
-const customerAddressInput = document.getElementById("customerAddress"); 
-
+// ================= LOCALIZAÇÃO =================
 if (getLocationBtn) {
   getLocationBtn.addEventListener("click", () => {
-    console.log("Botão de localização clicado.");
 
     if (!navigator.geolocation) {
       showToast("Seu navegador não suporta localização.");
-      console.log("Geolocation não existe no navegador.");
-      return;
-    }
-
-    if (!window.isSecureContext) {
-      showToast("Abra o site com HTTPS.");
-      console.log("Site não está em contexto seguro:", window.location.href);
       return;
     }
 
     showToast("Buscando localização...");
 
     navigator.geolocation.getCurrentPosition(
+
       (position) => {
-        console.log("Localização encontrada:", position);
 
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
-        const mapsLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
+        const mapsLink =
+          `https://www.google.com/maps?q=${latitude},${longitude}`;
 
         if (customerLocation) {
           customerLocation.value = mapsLink;
-        }
-
-        if (customerAddressInput) {
-          customerAddressInput.value = "Localização enviada pelo mapa";
         }
 
         showToast("Localização adicionada.");
       },
 
       (error) => {
-        console.log("Erro ao pegar localização:", error);
 
         if (error.code === error.PERMISSION_DENIED) {
-          showToast("Permissão de localização negada.");
-        } else if (error.code === error.POSITION_UNAVAILABLE) {
+          showToast("Permissão negada.");
+        } else if (
+          error.code === error.POSITION_UNAVAILABLE
+        ) {
           showToast("Localização indisponível.");
-        } else if (error.code === error.TIMEOUT) {
-          showToast("Tempo esgotado. Tente novamente.");
+        } else if (
+          error.code === error.TIMEOUT
+        ) {
+          showToast("Tempo esgotado.");
         } else {
           showToast("Erro ao buscar localização.");
         }
@@ -715,5 +804,6 @@ if (getLocationBtn) {
     );
   });
 }
+
 // ================= INICIALIZAÇÃO =================
 renderCart();
