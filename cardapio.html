@@ -2,37 +2,78 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
 
   <title>Takita Sushi | Cardápio</title>
 
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
   <!-- ================= HEADER ================= -->
   <header class="header">
+
     <nav class="navbar">
 
       <a href="index.html" class="logo">
+
         <div class="logo-mark">
           <img src="logo.png" alt="Takita Sushi" />
         </div>
+
       </a>
 
       <ul class="nav-menu">
-        <li><a href="index.html">Início</a></li>
-        <li><a href="cardapio.html" class="active">Cardápio</a></li>
-        <li><a href="barcas.html">Barcas</a></li>
-        <li><a href="personalizados.html">Eventos</a></li>
+
+        <li>
+          <a href="index.html">
+            Início
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="cardapio.html"
+            class="active"
+          >
+            Cardápio
+          </a>
+        </li>
+
+        <li>
+          <a href="barcas.html">
+            Barcas
+          </a>
+        </li>
+
+        <li>
+          <a href="personalizados.html">
+            Eventos
+          </a>
+        </li>
+
       </ul>
 
-      <button class="cart-button" id="openCartBtn" type="button">
+      <button
+        class="cart-button"
+        id="openCartBtn"
+        type="button"
+      >
+
         <i data-lucide="shopping-bag"></i>
-        <span id="cartCount">0</span>
+
+        <span id="cartCount">
+          0
+        </span>
+
       </button>
 
     </nav>
+
   </header>
 
   <!-- ================= MAIN ================= -->
@@ -40,444 +81,352 @@
 
     <!-- ================= CATEGORIAS ================= -->
     <section class="categories-section">
+
       <div class="section-title">
+
         <span>Menu</span>
-        <h2>Cardápio Takita Sushi</h2>
-        <p>Escolha uma categoria e monte seu pedido.</p>
+
+        <h2>
+          Cardápio Takita Sushi
+        </h2>
+
+        <p>
+          Escolha uma categoria e monte seu pedido.
+        </p>
+
       </div>
 
       <div class="category-buttons">
-        <button class="category-btn active" type="button" data-category="todos">Todos</button>
-        <button class="category-btn" type="button" data-category="hot-holl">Hot Holl's</button>
-        <button class="category-btn" type="button" data-category="temaki">Temaki's</button>
-        <button class="category-btn" type="button" data-category="barca">Barcas</button>
-        <button class="category-btn" type="button" data-category="hossomaki">Hossomakis</button>
-        <button class="category-btn" type="button" data-category="bebidas">Bebidas</button>
+
+        <button
+          class="category-btn active"
+          type="button"
+          data-category="todos"
+        >
+          Todos
+        </button>
+
+        <button
+          class="category-btn"
+          type="button"
+          data-category="hot-holl"
+        >
+          Hot Holl's
+        </button>
+
+        <button
+          class="category-btn"
+          type="button"
+          data-category="temaki"
+        >
+          Temaki's
+        </button>
+
+        <button
+          class="category-btn"
+          type="button"
+          data-category="barca"
+        >
+          Barcas
+        </button>
+
+        <button
+          class="category-btn"
+          type="button"
+          data-category="hossomaki"
+        >
+          Hossomakis
+        </button>
+
+        <button
+          class="category-btn"
+          type="button"
+          data-category="bebidas"
+        >
+          Bebidas
+        </button>
+
       </div>
+
     </section>
 
     <!-- ================= CARDÁPIO ================= -->
-    <section class="menu-section" id="cardapio">
-      <div class="menu-grid" id="menuGrid">
+    <section
+      class="menu-section"
+      id="cardapio"
+    >
 
-        <!-- HOT HOLL -->
-        <article class="product-card" data-category="hot-holl">
-          <div class="product-image">
-            <img src="salmão_hot.png" alt="Hot Holl Salmão" />
-          </div>
+      <div
+        class="menu-grid"
+        id="menuGrid"
+      >
 
-          <div class="product-info">
-            <span>Hot Holl</span>
-            <h3>Hot Holl Philadelphia</h3>
-            <p>Porção de hot holl de salmão com finalização especial.</p>
-
-            <div class="product-footer">
-              <strong>R$27,90</strong>
-              <button class="add-btn" type="button" data-id="1">
-                <i data-lucide="plus"></i>
-                Adicionar
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card" data-category="hot-holl">
-          <div class="product-image">
-            <img src="hotholl2.png" alt="Hot Holl Camarão" />
-          </div>
-
-          <div class="product-info">
-            <span>Hot Holl</span>
-            <h3>Hot Holl Butterfly</h3>
-            <p>Porção de hot holl de camarão crocante e bem recheado.</p>
-
-            <div class="product-footer">
-              <strong>R$27,90</strong>
-              <button class="add-btn" type="button" data-id="2">
-                <i data-lucide="plus"></i>
-                Adicionar
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <!-- URAMAKI / HOSSOMAKI -->
-        <article class="product-card" data-category="hossomaki">
-          <div class="product-image">
-            <img src="uramaki.png" alt="Uramaki Salmão" />
-          </div>
-
-          <div class="product-info">
-            <span>Uramaki</span>
-            <h3>Uramaki Salmão</h3>
-            <p>Uramaki de salmão com 10 unidades.</p>
-
-            <div class="product-footer">
-              <strong>R$29,90</strong>
-              <button class="add-btn" type="button" data-id="3">
-                <i data-lucide="plus"></i>
-                Adicionar
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card" data-category="hossomaki">
-          <div class="product-image">
-            <img src="uramakicamarão.png" alt="Uramaki Camarão" />
-          </div>
-
-          <div class="product-info">
-            <span>Uramaki</span>
-            <h3>Uramaki Camarão</h3>
-            <p>Uramaki de camarão com 10 unidades.</p>
-
-            <div class="product-footer">
-              <strong>R$29,90</strong>
-              <button class="add-btn" type="button" data-id="4">
-                <i data-lucide="plus"></i>
-                Adicionar
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card" data-category="hossomaki">
-          <div class="product-image">
-            <img src="hossomaki.png" alt="Hossomaki Salmão" />
-          </div>
-
-          <div class="product-info">
-            <span>Hossomaki</span>
-            <h3>Hossomaki Salmão</h3>
-            <p>Hossomaki de salmão com 10 unidades.</p>
-
-            <div class="product-footer">
-              <strong>R$29,90</strong>
-              <button class="add-btn" type="button" data-id="5">
-                <i data-lucide="plus"></i>
-                Adicionar
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <!-- TEMAKI -->
-        <article class="product-card" data-category="temaki">
-          <div class="product-image">
-            <img src="temaki (1).png" alt="Temaki Salmão Cru" />
-          </div>
-
-          <div class="product-info">
-            <span>Temaki</span>
-            <h3>Temaki Salmão Cru</h3>
-            <p>Temaki de salmão cru. 1 unidade.</p>
-
-            <div class="product-footer">
-              <strong>R$34,90</strong>
-              <button class="add-btn" type="button" data-id="6">
-                <i data-lucide="plus"></i>
-                Adicionar
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card" data-category="temaki">
-          <div class="product-image">
-            <img src="temakicamarão.png" alt="Temaki Camarão Cru" />
-          </div>
-
-          <div class="product-info">
-            <span>Temaki</span>
-            <h3>Temaki Camarão Cru</h3>
-            <p>Temaki de camarão cru. 1 unidade.</p>
-
-            <div class="product-footer">
-              <strong>R$34,90</strong>
-              <button class="add-btn" type="button" data-id="7">
-                <i data-lucide="plus"></i>
-                Adicionar
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card" data-category="temaki">
-          <div class="product-image">
-            <img src="temaki3.png" alt="Temaki Salmão Frito" />
-          </div>
-
-          <div class="product-info">
-            <span>Temaki</span>
-            <h3>Temaki Salmão Frito</h3>
-            <p>Temaki de salmão frito. 1 unidade.</p>
-
-            <div class="product-footer">
-              <strong>R$34,90</strong>
-              <button class="add-btn" type="button" data-id="8">
-                <i data-lucide="plus"></i>
-                Adicionar
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card" data-category="temaki">
-          <div class="product-image">
-            <img src="temakihot.png" alt="Temaki Camarão Frito" />
-          </div>
-
-          <div class="product-info">
-            <span>Temaki</span>
-            <h3>Temaki Camarão Frito</h3>
-            <p>Temaki de camarão frito. 1 unidade.</p>
-
-            <div class="product-footer">
-              <strong>R$34,90</strong>
-              <button class="add-btn" type="button" data-id="9">
-                <i data-lucide="plus"></i>
-                Adicionar
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <!-- BARCAS -->
-        <article class="product-card product-featured" data-category="barca">
-          <div class="product-image">
-            <img src="barcaG.png" alt="Barca P Mista" />
-          </div>
-
-          <div class="product-info">
-            <span>Barca</span>
-            <h3>P Mista</h3>
-            <p>Barca mista com 20 unidades.</p>
-
-            <div class="product-footer">
-              <strong>R$59,90</strong>
-              <button class="add-btn" type="button" data-id="10">
-                <i data-lucide="plus"></i>
-                Adicionar
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card product-featured" data-category="barca">
-          <div class="product-image">
-            <img src="barcaM.png" alt="Barca M Mista" />
-          </div>
-
-          <div class="product-info">
-            <span>Barca</span>
-            <h3>M Mista</h3>
-            <p>Barca mista com 30 unidades.</p>
-
-            <div class="product-footer">
-              <strong>R$79,90</strong>
-              <button class="add-btn" type="button" data-id="11">
-                <i data-lucide="plus"></i>
-                Adicionar
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card product-featured big-card" data-category="barca">
-          <div class="product-image">
-            <img src="barcaG.png" alt="Barca G Mista" />
-          </div>
-
-          <div class="product-info">
-            <span>Mais pedida</span>
-            <h3>G Mista</h3>
-            <p>Barca mista com 55 unidades. Ideal para compartilhar.</p>
-
-            <div class="product-footer">
-              <strong>R$129,90</strong>
-              <button class="add-btn" type="button" data-id="12">
-                <i data-lucide="plus"></i>
-                Adicionar
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <!-- BEBIDAS -->
-        <article class="product-card" data-category="bebidas">
-          <div class="product-image">
-            <img src="fantauva.png" alt="Fanta Uva" />
-          </div>
-
-          <div class="product-info">
-            <span>Bebida</span>
-            <h3>Fanta Uva 2L</h3>
-            <p>Refrigerante para acompanhar seu pedido.</p>
-
-            <div class="product-footer">
-              <strong>R$14,90</strong>
-              <button class="add-btn" type="button" data-id="13">
-                <i data-lucide="plus"></i>
-                Adicionar
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card" data-category="bebidas">
-          <div class="product-image">
-            <img src="fanta.png" alt="Fanta Laranja 2L" />
-          </div>
-
-          <div class="product-info">
-            <span>Bebida</span>
-            <h3>Fanta Laranja 2L</h3>
-            <p>Refrigerante para acompanhar seu pedido.</p>
-
-            <div class="product-footer">
-              <strong>R$14,90</strong>
-              <button class="add-btn" type="button" data-id="14">
-                <i data-lucide="plus"></i>
-                Adicionar
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card" data-category="bebidas">
-          <div class="product-image">
-            <img src="bare.png" alt="Guaraná Baré" />
-          </div>
-
-          <div class="product-info">
-            <span>Bebida</span>
-            <h3>Guaraná Baré 2L</h3>
-            <p>Refrigerante para acompanhar seu pedido.</p>
-
-            <div class="product-footer">
-              <strong>R$7,90</strong>
-              <button class="add-btn" type="button" data-id="15">
-                <i data-lucide="plus"></i>
-                Adicionar
-              </button>
-            </div>
-          </div>
-        </article>
+        <!-- PRODUTOS -->
 
       </div>
+
     </section>
 
   </main>
 
   <!-- ================= CARRINHO ================= -->
-  <aside class="cart-drawer" id="cartDrawer">
+  <aside
+    class="cart-drawer"
+    id="cartDrawer"
+  >
 
     <div class="cart-header">
+
       <div>
-        <span>Seu pedido</span>
-        <h2>Carrinho</h2>
+
+        <span>
+          Seu pedido
+        </span>
+
+        <h2>
+          Carrinho
+        </h2>
+
       </div>
 
-      <button class="close-btn" id="closeCartBtn" type="button">
+      <button
+        class="close-btn"
+        id="closeCartBtn"
+        type="button"
+      >
+
         <i data-lucide="x"></i>
+
       </button>
+
     </div>
 
-    <div class="cart-items" id="cartItems">
-      <p class="empty-cart">Seu carrinho está vazio.</p>
+    <div
+      class="cart-items"
+      id="cartItems"
+    >
+
+      <p class="empty-cart">
+        Seu carrinho está vazio.
+      </p>
+
     </div>
 
     <div class="cart-footer">
+
       <div class="cart-total">
-        <span>Total</span>
-        <strong id="cartTotal">R$ 0,00</strong>
+
+        <span>
+          Total
+        </span>
+
+        <strong id="cartTotal">
+          R$ 0,00
+        </strong>
+
       </div>
 
-      <button class="btn btn-primary full" id="checkoutBtn" type="button">
+      <button
+        class="btn btn-primary full"
+        id="checkoutBtn"
+        type="button"
+      >
+
         <i data-lucide="send"></i>
+
         Finalizar pedido
+
       </button>
 
-      <button class="clear-cart" id="clearCartBtn" type="button">
+      <button
+        class="clear-cart"
+        id="clearCartBtn"
+        type="button"
+      >
         Limpar carrinho
       </button>
+
     </div>
 
   </aside>
 
   <!-- ================= MODAL ================= -->
-  <section class="checkout-modal" id="checkoutModal">
+  <section
+    class="checkout-modal"
+    id="checkoutModal"
+  >
+
     <div class="modal-content">
 
-      <button class="close-btn modal-close" id="closeModalBtn" type="button">
+      <button
+        class="close-btn modal-close"
+        id="closeModalBtn"
+        type="button"
+      >
+
         <i data-lucide="x"></i>
+
       </button>
 
-      <span>Finalização</span>
-      <h2>Dados do pedido</h2>
+      <span>
+        Finalização
+      </span>
+
+      <h2>
+        Dados do pedido
+      </h2>
 
       <form id="checkoutForm">
 
         <label for="customerName">
+
           Nome
-          <input type="text" id="customerName" placeholder="Digite seu nome" required />
+
+          <input
+            type="text"
+            id="customerName"
+            placeholder="Digite seu nome"
+            required
+          />
+
         </label>
 
         <label for="customerPhone">
+
           Telefone
-          <input type="tel" id="customerPhone" placeholder="Digite seu telefone" required />
+
+          <input
+            type="tel"
+            id="customerPhone"
+            placeholder="Digite seu telefone"
+            required
+          />
+
         </label>
 
         <label for="customerAddress">
+
           Endereço
-          <input type="text" id="customerAddress" placeholder="Digite seu endereço" />
+
+          <input
+            type="text"
+            id="customerAddress"
+            placeholder="Digite seu endereço"
+            required
+          />
+
         </label>
 
-            <button class="location-btn" id="getLocationBtn" type="button">
+        <button
+          class="location-btn"
+          id="getLocationBtn"
+          type="button"
+        >
+
           <i data-lucide="map-pin"></i>
-          Usar minha localização
+
+          Compartilhar localização
+
         </button>
 
+        <!-- LOCALIZAÇÃO OCULTA -->
+        <input
+          type="hidden"
+          id="customerLocation"
+        />
+
         <label for="paymentMethod">
+
           Forma de pagamento
-          <select id="paymentMethod" required>
-            <option value="">Selecione</option>
-            <option value="Pix">Pix</option>
-            <option value="Dinheiro">Dinheiro</option>
-            <option value="Cartão na entrega">Cartão na entrega</option>
+
+          <select
+            id="paymentMethod"
+            required
+          >
+
+            <option value="">
+              Selecione
+            </option>
+
+            <option value="Pix">
+              Pix
+            </option>
+
+            <option value="Dinheiro">
+              Dinheiro
+            </option>
+
+            <option value="Cartão na entrega">
+              Cartão na entrega
+            </option>
+
           </select>
+
         </label>
 
         <label for="customerNote">
+
           Observação
-          <textarea id="customerNote" placeholder="Ex: retirar algo, mandar molho extra..."></textarea>
+
+          <textarea
+            id="customerNote"
+            placeholder="Ex: retirar algo, mandar molho extra..."
+          ></textarea>
+
         </label>
 
-        <button class="btn btn-primary full" type="submit">
+        <button
+          class="btn btn-primary full"
+          type="submit"
+        >
+
           <i data-lucide="message-circle"></i>
+
           Enviar no WhatsApp
+
         </button>
 
       </form>
 
     </div>
+
   </section>
 
-  <div class="toast" id="toast">Produto adicionado ao carrinho.</div>
-  <div class="overlay" id="overlay"></div>
+  <!-- ================= TOAST ================= -->
+  <div
+    class="toast"
+    id="toast"
+  >
+    Produto adicionado ao carrinho.
+  </div>
+
+  <!-- ================= OVERLAY ================= -->
+  <div
+    class="overlay"
+    id="overlay"
+  ></div>
 
   <!-- ================= FOOTER ================= -->
   <footer class="footer">
-    <strong>Takita Sushi</strong>
-    <p>O melhor sushi da cidade!</p>
+
+    <strong>
+      Takita Sushi
+    </strong>
+
+    <p>
+      O melhor sushi da cidade!
+    </p>
+
   </footer>
 
+  <!-- ================= SCRIPTS ================= -->
   <script src="https://unpkg.com/lucide@latest"></script>
+
   <script src="script.js"></script>
 
   <script>
     lucide.createIcons();
   </script>
+
 </body>
 </html>
