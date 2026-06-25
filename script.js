@@ -1,7 +1,7 @@
 // ================= CONFIGURAÇÃO =================
 // Número do WhatsApp do Takita Sushi.
 // Formato: 55 + DDD + número.
-const WHATSAPP_NUMBER = "5592985194693";
+const WHATSAPP_NUMBER = "5592985623962";
 
 // ================= PRODUTOS =================
 const products = [
@@ -10,117 +10,132 @@ const products = [
     name: "Hot Holl Philadelphia",
     category: "hot-holl",
     price: 27.90,
-    image: "salmão_hot.png"
+    image: "imagens/salmão_hot.png"
   },
   {
     id: 2,
     name: "Hot Holl Butterfly",
     category: "hot-holl",
     price: 27.90,
-    image: "hotholl2.png"
+    image: "imagens/hotholl2.png"
   },
   {
     id: 3,
     name: "Uramaki Salmão",
     category: "hossomaki",
     price: 29.90,
-    image: "uramaki.png"
+    image: "imagens/uramaki.png"
   },
   {
     id: 4,
     name: "Uramaki Camarão",
     category: "hossomaki",
     price: 29.90,
-    image: "uramakicamarão.png"
+    image: "imagens/uramakicamarão.png"
   },
   {
     id: 5,
     name: "Hossomaki Salmão",
     category: "hossomaki",
     price: 29.90,
-    image: "hossomaki.png"
+    image: "imagens/hossomaki.png"
   },
   {
     id: 6,
     name: "Temaki Salmão Cru",
     category: "temaki",
     price: 34.90,
-    image: "temaki (1).png"
+    image: "imagens/temaki (1).png"
   },
   {
     id: 7,
     name: "Temaki Camarão Cru",
     category: "temaki",
     price: 34.90,
-    image: "temakicamarão.png"
+    image: "imagens/temakicamarão.png"
   },
   {
     id: 8,
-    name: "Temaki Salmão Frito",
-    category: "temaki",
+    name: "Dog-Hot Salmão",
+    category: "hot-holl",
     price: 34.90,
-    image: "temaki3.png"
+    image: "imagens/dog.png"
   },
   {
     id: 9,
-    name: "Temaki Camarão Frito",
-    category: "temaki",
+    name: "Dog-Hot Camarão",
+    category: "hot-holl",
     price: 34.90,
-    image: "temakihot.png"
+    image: "imagens/dog.png"
   },
   {
     id: 10,
-    name: "P Mista",
-    category: "barca",
-    price: 59.90,
-    image: "barcaG.png"
+    name: "Temaki Salmão Frito",
+    category: "temaki",
+    price: 34.90,
+    image: "imagens/temaki3.png"
   },
   {
     id: 11,
-    name: "M Mista",
-    category: "barca",
-    price: 79.90,
-    image: "barcaG.png"
+    name: "Temaki Camarão Frito",
+    category: "temaki",
+    price: 34.90,
+    image: "imagens/temakihot.png"
   },
   {
     id: 12,
-    name: "G Mista",
+    name: "P Mista",
     category: "barca",
-    price: 129.90,
-    image: "barcaG.png"
+    price: 59.90,
+    image: "imagens/barcaG.png"
   },
   {
     id: 13,
-    name: "Fanta Uva 2L",
-    category: "bebidas",
-    price: 14.90,
-    image: "fantauva.png"
+    name: "M Mista",
+    category: "barca",
+    price: 79.90,
+    image: "imagens/barcaG.png"
   },
   {
     id: 14,
-    name: "Fanta Laranja 2L",
-    category: "bebidas",
-    price: 14.90,
-    image: "fanta.png"
+    name: "G Mista",
+    category: "barca",
+    price: 129.90,
+    image: "imagens/barcaG.png"
   },
   {
     id: 15,
-    name: "Guaraná Baré 2L",
-    category: "bebidas",
-    price: 7.90,
-    image: "bare.png"
-  },
-  {
-    id: 16,
     name: "Coca-Cola 2L",
     category: "bebidas",
     price: 14.90,
-    image: "coca.png"
-  }
+    image: "imagens/coca.png"
+  },
+  {
+    id: 16,
+    name: "Coca em lata 350ml",
+    category: "bebidas",
+    price: 5.90,
+    image: "imagens/cocalata.png"
+  },
+  {
+    id: 17,
+    name: "Molho Tarê",
+    category: "adicionais",
+    price: 0.50,
+    image: "imagens/molhotare.png"
+  },
+  {
+    id: 18,
+    name: "Molho Shoyu",
+    category: "adicionais",
+    price: 0.50,
+    image: "imagens/molhoshoyu.png"
+  },
 ];
 
 // ================= ESTADO =================
 let cart = JSON.parse(localStorage.getItem("takita_cart")) || [];
+
 
 // ================= ELEMENTOS =================
 const categoryButtons = document.querySelectorAll(".category-btn");
@@ -217,6 +232,7 @@ function addToCart(productId) {
   saveCart();
   renderCart();
   showToast("Produto adicionado ao carrinho.");
+  updateCartSummary();
 }
 
 // ================= RENDERIZAR CARRINHO =================
@@ -233,6 +249,7 @@ function renderCart() {
     `;
   } else {
     cart.forEach((item) => {
+
       const itemTotal = typeof item.price === "number"
         ? formatCurrency(item.price * item.quantity)
         : "Consultar";
@@ -282,13 +299,16 @@ function renderCart() {
         </div>
       `;
 
-      cartItems.appendChild(cartItem);
+            cartItems.appendChild(cartItem);
     });
   }
 
   updateCartSummary();
 }
 
+
+
+// ================= CONTROLES DO CARRINHO =================
 // ================= CONTROLES DO CARRINHO =================
 if (cartItems) {
   cartItems.addEventListener("click", (event) => {
@@ -322,6 +342,7 @@ function increaseQuantity(productId) {
 
   saveCart();
   renderCart();
+  updateCartSummary();
 }
 
 function decreaseQuantity(productId) {
@@ -337,7 +358,9 @@ function decreaseQuantity(productId) {
 
   saveCart();
   renderCart();
+  updateCartSummary();
 }
+
 
 function removeFromCart(productId) {
   cart = cart.filter((product) => product.id !== productId);
@@ -345,6 +368,7 @@ function removeFromCart(productId) {
   saveCart();
   renderCart();
   showToast("Produto removido do carrinho.");
+  updateCartSummary();
 }
 
 function clearCart() {
@@ -358,6 +382,7 @@ function clearCart() {
   saveCart();
   renderCart();
   showToast("Carrinho limpo.");
+  updateCartSummary();
 }
 
 // ================= RESUMO DO CARRINHO =================
@@ -376,6 +401,8 @@ function updateCartSummary() {
     return sum + item.price * item.quantity;
   }, 0);
 
+
+  
   const hasConsultItem = cart.some((item) => typeof item.price !== "number");
 
   cartCount.textContent = totalQuantity;
@@ -389,6 +416,8 @@ function updateCartSummary() {
   } else {
     cartTotal.textContent = formatCurrency(totalValue);
   }
+
+
 }
 
 // ================= ABRIR E FECHAR CARRINHO =================
@@ -461,7 +490,8 @@ if (checkoutForm) {
     if (cart.length === 0) {
       showToast("Seu carrinho está vazio.");
       return;
-    }
+    };
+
 
     const customerName = document.getElementById("customerName").value.trim();
     const customerPhone = document.getElementById("customerPhone").value.trim();
@@ -469,14 +499,23 @@ if (checkoutForm) {
     const locationLink = document.getElementById("customerLocation")?.value || "";
     const paymentMethod = document.getElementById("paymentMethod").value;
     const customerNote = document.getElementById("customerNote").value.trim();
+    const customerReference = document.getElementById("customerReference") .value.trim();
 
-    const totalValue = cart.reduce((sum, item) => {
-      if (typeof item.price !== "number") {
-        return sum;
-      }
+   let totalValue = cart.reduce((sum, item) => {
+  if (typeof item.price !== "number") {
+    return sum;
+  }
 
-      return sum + item.price * item.quantity;
-    }, 0);
+  return sum + item.price * item.quantity;
+}, 0);
+
+let taxValue = 0;
+
+if (paymentMethod === "Cartão De Crédito") {
+  taxValue = totalValue * 0.05;
+}
+
+totalValue += taxValue;
 
     const hasConsultItem = cart.some((item) => typeof item.price !== "number");
 
@@ -498,25 +537,46 @@ if (checkoutForm) {
 
     if (hasConsultItem && totalValue === 0) {
       totalText = "Consultar";
-    }
-
+    };
+      
     const message = `
-Olá! Quero fazer um pedido no Takita Sushi.
+🍣 *NOVO PEDIDO - TAKITA SUSHI*
 
-Itens do pedido:
-${orderItems}
+━━━━━━━━━━━━━━
 
-Total: ${totalText}
-
-Dados do cliente:
+👤 *CLIENTE*
 Nome: ${customerName}
 Telefone: ${customerPhone}
-Endereço: ${customerAddress}
-Localização: ${locationLink || ""}
-Pagamento: ${paymentMethod}
-Observação: ${customerNote || "Nenhuma"}
-    `.trim();
 
+📍 *ENTREGA*
+Endereço: ${customerAddress}
+Referência: ${customerReference}
+Localização: ${locationLink || "Não enviada"}
+
+━━━━━━━━━━━━━━
+
+🛒 *ITENS*
+
+${orderItems}
+
+━━━━━━━━━━━━━━
+
+💳 *PAGAMENTO*
+Forma: ${paymentMethod}
+
+💸 *TAXA*
+${formatCurrency(taxValue)}
+
+💰 *TOTAL*
+${formatCurrency(totalValue)}
+
+━━━━━━━━━━━━━━
+
+📝 *OBSERVAÇÃO*
+${customerNote || "Nenhuma"}
+`;
+
+console.log("LINK MAPA:", locationLink); {
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
 
@@ -527,9 +587,13 @@ Observação: ${customerNote || "Nenhuma"}
     renderCart();
     checkoutForm.reset();
     closeAllPanels();
-  });
-}
+    updateCartSummary();
 
+};
+
+
+});
+}
 // ================= TOAST =================
 function showToast(message) {
   if (!toast) return;
@@ -539,7 +603,8 @@ function showToast(message) {
 
   setTimeout(() => {
     toast.classList.remove("active");
-  }, 2300);
+  }, 3000);
+
 }
 
 // ================= CARROSSEL DE DESTAQUE DA HOME =================
@@ -562,7 +627,7 @@ const featuredItems = [
     image: "temaki (1).png",
     tag: "Especial",
     name: "Temaki",
-    price: "R$34,90",
+    price: "R$36,90",
     info: "1 unidade"
   }
 ];
@@ -688,12 +753,9 @@ if (getLocationBtn) {
 
         const mapsLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
 
+        console.log("Link salvo:", customerLocation.value);
         if (customerLocation) {
           customerLocation.value = mapsLink;
-        }
-
-        if (customerAddressInput) {
-          customerAddressInput.value = "Localização enviada pelo mapa";
         }
 
         showToast("Localização adicionada.");
@@ -723,3 +785,4 @@ if (getLocationBtn) {
 }
 // ================= INICIALIZAÇÃO =================
 renderCart();
+updateCartSummary();
