@@ -822,10 +822,10 @@ if (getLocationBtn) {
 
         const mapsLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
 
-        console.log("Link salvo:", customerLocation.value);
         if (customerLocation) {
-          customerLocation.value = mapsLink;
-        }
+  customerLocation.value = mapsLink;
+  console.log("Link salvo:", customerLocation.value);
+}
 
         showToast("Localização adicionada.");
       },
@@ -845,8 +845,8 @@ if (getLocationBtn) {
       },
 
       {
-        enableHighAccuracy: false,
-        timeout: 10000,
+        enableHighAccuracy: true,
+        timeout: 20000,
         maximumAge: 300000
       }
     );
