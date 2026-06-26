@@ -2,7 +2,7 @@
 // Número do WhatsApp do Takita Sushi.
 // Formato: 55 + DDD + número.
 const WHATSAPP_NUMBER = "5592985623962";
-
+const PIX_KEY = "92985194693";
 // ================= PRODUTOS =================
 const products = [
   {
@@ -44,14 +44,14 @@ const products = [
     id: 6,
     name: "Temaki Salmão Cru",
     category: "temaki",
-    price: 34.90,
+    price: 36.90,
     image: "temaki (1).png"
   },
   {
     id: 7,
     name: "Temaki Camarão Cru",
     category: "temaki",
-    price: 34.90,
+    price: 39.90,
     image: "temakicamarão.png"
   },
   {
@@ -105,7 +105,7 @@ const products = [
   },
   {
     id: 15,
-    name: "G Mista",
+    name: "Barca G Hot",
     category: "barca",
     price: 99.90,
     image: "barcaG.png"
@@ -140,11 +140,26 @@ const products = [
   },
   {
     id: 20,
-    name: "Uramaki Premium",
+    name: "Uramaki Premium Salmão",
     category: "hossomaki",
     price: 34.90,
     image: "uramakipremium.png"
   },
+  {
+    id: 21,
+    name: "Uramaki Premium Camarão",
+    category: "hossomaki",
+    price: 34.90,
+    image: "uramakipremium.png"
+  },
+  {
+    id: 22,
+    name: "Barca M Hot",
+    category: "barca",
+    price: 79.90,
+    image: "barcaG.png"
+  },
+  
 ];
 
 // ================= ESTADO =================
@@ -172,6 +187,23 @@ const checkoutForm = document.getElementById("checkoutForm");
 
 const getLocationBtn = document.getElementById("getLocationBtn");
 const customerLocation = document.getElementById("customerLocation");
+
+const pixInfo = document.getElementById("pixInfo");
+const copyPixBtn = document.getElementById("copyPixBtn");
+const pixKey = document.getElementById("pixKey");
+
+if (copyPixBtn) {
+  copyPixBtn.addEventListener("click", () => {
+    pixKey.select();
+    pixKey.setSelectionRange(0, 99999);
+
+    const copied = document.execCommand("copy");
+
+    if (copied) {
+      showToast("Chave PIX copiada!");
+    }
+  })
+};
 
 const toast = document.getElementById("toast");
 
@@ -730,12 +762,35 @@ if (checkoutBtn) {
   checkoutBtn.addEventListener("click", openCheckoutModal);
 }
 
+const paymentMethodSelect = document.getElementById("paymentMethod");
+
+if (paymentMethodSelect) {
+  paymentMethodSelect.addEventListener("change", () => {
+    if (paymentMethodSelect.value === "Pix") {
+      pixInfo.style.display = "block";
+    } else {
+      pixInfo.style.display = "none";
+    }
+  });
+}
+
 if (closeModalBtn) {
   closeModalBtn.addEventListener("click", closeCheckoutModal);
 }
 
 if (overlay) {
   overlay.addEventListener("click", closeAllPanels);
+}
+
+if (copyPixBtn) {
+  copyPixBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(PIX_KEY);
+      showToast("Chave PIX copiada!");
+    } catch {
+      showToast("Chave PIX copiada!");
+    }
+  });
 }
 
 const customerAddressInput = document.getElementById("customerAddress"); 
@@ -800,4 +855,3 @@ if (getLocationBtn) {
 // ================= INICIALIZAÇÃO =================
 renderCart();
 updateCartSummary();
-
