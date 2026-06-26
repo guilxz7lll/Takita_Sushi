@@ -10,126 +10,140 @@ const products = [
     name: "Hot Holl Philadelphia",
     category: "hot-holl",
     price: 27.90,
-    image: "imagens/salmão_hot.png"
+    image: "salmão_hot.png"
   },
   {
     id: 2,
     name: "Hot Holl Butterfly",
     category: "hot-holl",
     price: 27.90,
-    image: "imagens/hotholl2.png"
+    image: "hotholl2.png"
   },
   {
     id: 3,
     name: "Uramaki Salmão",
     category: "hossomaki",
     price: 29.90,
-    image: "imagens/uramaki.png"
+    image: "uramaki.png"
   },
   {
     id: 4,
     name: "Uramaki Camarão",
     category: "hossomaki",
     price: 29.90,
-    image: "imagens/uramakicamarão.png"
+    image: "uramakicamarão.png"
   },
   {
     id: 5,
     name: "Hossomaki Salmão",
     category: "hossomaki",
     price: 29.90,
-    image: "imagens/hossomaki.png"
+    image: "hossomaki.png"
   },
   {
     id: 6,
     name: "Temaki Salmão Cru",
     category: "temaki",
     price: 34.90,
-    image: "imagens/temaki (1).png"
+    image: "temaki (1).png"
   },
   {
     id: 7,
     name: "Temaki Camarão Cru",
     category: "temaki",
     price: 34.90,
-    image: "imagens/temakicamarão.png"
+    image: "temakicamarão.png"
   },
   {
     id: 8,
     name: "Dog-Hot Salmão",
     category: "hot-holl",
     price: 34.90,
-    image: "imagens/dog.png"
+    image: "dog.png"
   },
   {
     id: 9,
     name: "Dog-Hot Camarão",
     category: "hot-holl",
     price: 34.90,
-    image: "imagens/dog.png"
+    image: "dog.png"
   },
   {
     id: 10,
     name: "Temaki Salmão Frito",
     category: "temaki",
     price: 34.90,
-    image: "imagens/temaki3.png"
+    image: "temaki3.png"
   },
   {
     id: 11,
     name: "Temaki Camarão Frito",
     category: "temaki",
     price: 34.90,
-    image: "imagens/temakihot.png"
+    image: "temakihot.png"
   },
   {
     id: 12,
     name: "P Mista",
     category: "barca",
     price: 59.90,
-    image: "imagens/barcaG.png"
+    image: "barcaG.png"
   },
   {
     id: 13,
     name: "M Mista",
     category: "barca",
     price: 79.90,
-    image: "imagens/barcaG.png"
+    image: "barcaG.png"
   },
   {
     id: 14,
-    name: "G Mista",
+    name: "G mista",
     category: "barca",
     price: 129.90,
-    image: "imagens/barcaG.png"
+    image: "barcaG.png"
   },
   {
     id: 15,
-    name: "Coca-Cola 2L",
-    category: "bebidas",
-    price: 14.90,
-    image: "imagens/coca.png"
+    name: "G Mista",
+    category: "barca",
+    price: 99.90,
+    image: "barcaG.png"
   },
   {
     id: 16,
-    name: "Coca em lata 350ml",
+    name: "Coca-Cola 2L",
     category: "bebidas",
-    price: 5.90,
-    image: "imagens/cocalata.png"
+    price: 14.90,
+    image: "coca.png"
   },
   {
     id: 17,
-    name: "Molho Tarê",
-    category: "adicionais",
-    price: 0.50,
-    image: "imagens/molhotare.png"
+    name: "Coca em lata 350ml",
+    category: "bebidas",
+    price: 5.90,
+    image: "cocalata.png"
   },
   {
     id: 18,
+    name: "Molho Tarê",
+    category: "adicionais",
+    price: 0.50,
+    image: "molhotare.png"
+  },
+  {
+    id: 19,
     name: "Molho Shoyu",
     category: "adicionais",
     price: 0.50,
-    image: "imagens/molhoshoyu.png"
+    image: "molhoshoyu.png"
+  },
+  {
+    id: 20,
+    name: "Uramaki Premium",
+    category: "hossomaki",
+    price: 34.90,
+    image: "uramakipremium.png"
   },
 ];
 
