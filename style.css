@@ -5164,7 +5164,7 @@ body > .toast.active,
   min-height: 48px;
   padding: 0 16px;
   border-radius: 8px;
-  color: #b60f0fd0;
+  color: #ffffffd0;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid var(--border);
   font-weight: 900;
@@ -5177,10 +5177,49 @@ body > .toast.active,
 }
 
 .location-btn:hover {
-  background: var(--red);
+  background: var(--red-dark);
 }
 
 .location-btn i {
   width: 18px;
   height: 18px;
+}
+
+#pixInfo {
+  margin-top: 12px;
+  padding: 12px;
+  background: #2f2f2f24;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+#pixInfo p {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+#pixKey {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background: #2a2a2a32;
+  font-size: 15px;
+}
+
+#copyPixBtn {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #c307077e;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: .2s;
+}
+
+#copyPixBtn:hover {
+  background: #d60909c3;
 }
