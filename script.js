@@ -129,14 +129,14 @@ const products = [
     name: "Molho Tarê",
     category: "adicionais",
     price: 0.50,
-    image: "molhotare.png"
+    image: "tare.png"
   },
   {
     id: 19,
     name: "Molho Shoyu",
     category: "adicionais",
     price: 0.50,
-    image: "molhoshoyu.png"
+    image: "shoyu.png"
   },
   {
     id: 20,
