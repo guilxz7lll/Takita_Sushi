@@ -44,7 +44,7 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: url("imagens/main_home.png");
+  background-image: url("main_home.png");
   background-size: cover;
   background-position: center;
   opacity: 0.80;
@@ -107,9 +107,7 @@ i[data-lucide] {
   top: 0;
   z-index: 80;
   width: 100%;
-  background: rgba(7, 7, 7, 0.84);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0);
 }
 
 .navbar {
@@ -2159,7 +2157,6 @@ select option {
 
 /* =========================================================
    CORREÇÃO FINAL MOBILE — TAKITA SUSHI
-   Cole no FINAL do style.css
 ========================================================= */
 
 @media (max-width: 768px) {
@@ -2183,6 +2180,8 @@ select option {
     position: sticky;
     top: 0;
     z-index: 1000;
+    color: #00000000;
+    border-color: #00000000;
   }
 
   .navbar {
@@ -2779,7 +2778,7 @@ body.cart-open .cart-items {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(7, 7, 7, 0.96);
+    background: rgba(7, 7, 7, 0);
   }
 
   .navbar {
@@ -3086,9 +3085,8 @@ body.cart-open .cart-items {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(5, 5, 5, 0.92);
+    background: rgba(5, 5, 5, 0);
     backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
   }
 
   .navbar {
@@ -3956,8 +3954,8 @@ body.cart-open .cart-items {
     position: sticky !important;
     top: 0 !important;
     z-index: 3000 !important;
-    background: rgba(0, 0, 0, 0.96) !important;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    background: rgba(0, 0, 0, 0) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0);
   }
 
   .navbar {
