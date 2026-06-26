@@ -800,3 +800,4 @@ if (getLocationBtn) {
 // ================= INICIALIZAÇÃO =================
 renderCart();
 updateCartSummary();
+
