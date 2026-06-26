@@ -60,7 +60,7 @@
 
         <span>Menu</span>
 
-        <h2>
+        <h'''>
           Cardápio Takita Sushi
         </h2>
 
@@ -298,11 +298,59 @@
             <span>Uramaki Premium</span>
 
             <h3>
-              Uramaki Premium
+              Uramaki De Salmão Premium
             </h3>
 
             <p>
               Uramaki de salmão com 10 unidades.
+            </p>
+
+            <div class="product-footer">
+
+              <strong>
+                R$34,90
+              </strong>
+
+              <button
+                class="add-btn"
+                type="button"
+                data-id="20"
+              >
+
+                <i data-lucide="plus"></i>
+
+                Adicionar
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <article
+          class="product-card"
+          data-category="hossomaki"
+        >
+
+          <div class="product-image">
+            <img
+              src="uramakipremium.png"
+              alt="Uramaki Salmão"
+            />
+          </div>
+
+          <div class="product-info">
+
+            <span>Uramaki Premium</span>
+
+            <h3>
+              Uramaki De Camarão Premium 
+            </h3>
+
+            <p>
+              Uramaki de Camarão com 10 unidades.
             </p>
 
             <div class="product-footer">
@@ -623,7 +671,7 @@
 
             <div class="product-footer">
               <strong>R$79,90</strong>
-              <button class="add-btn" type="button" data-id="13">
+              <button class="add-btn" type="button" data-id="22">
                 <i data-lucide="plus"></i>
                 Adicionar
               </button>
@@ -954,31 +1002,25 @@
               Cartão de Débito
             </option>
 
-            <script>
-              <div class="payment-box">
-
-          <h3>Forma de pagamento</h3>
-
-          <button type="button" onclick="selectPayment('pix')">
-           <i data-lucide="pix"></i>PIX
-          </button>
-
-          <button type="button" onclick="selectPayment('card')">
-            <i data-lucide="credit-card"></i> Cartão
-          </button>
-
-          <button type="button" onclick="selectPayment('delivery')">
-            <i data-lucide="delivery"></i> Na entrega
-          </button>
-
-        </div>
-            </script>
-
             <option value="Cartão De Crédito">
               Cartão de Crédito
             </option>
 
           </select>
+
+          <div id="pixInfo" style="display: none;">
+             <p><strong>Chave PIX</strong></p>
+             <input
+              type="text"
+              id="pixKey"
+              readonly
+              value="92985194693"
+            >
+
+          <button type="button" id="copyPixBtn">
+            Copiar chave PIX
+          </button>
+          </div>
 
         </label>
 
