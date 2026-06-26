@@ -542,7 +542,8 @@ if (checkoutForm) {
     const customerName = document.getElementById("customerName").value.trim();
     const customerPhone = document.getElementById("customerPhone").value.trim();
     const customerAddress = document.getElementById("customerAddress").value.trim();
-    const locationLink = document.getElementById("customerLocation")?.value.trim() || "";
+    const locationLink = document.getElementById("customerLocation")?.value || "";
+    console.log("LOCATION LINK:", locationLink);
     const paymentMethod = document.getElementById("paymentMethod").value;
     const customerNote = document.getElementById("customerNote").value.trim();
     const customerReference = document.getElementById("customerReference") .value.trim();
