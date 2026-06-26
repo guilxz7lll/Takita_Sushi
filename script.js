@@ -543,7 +543,6 @@ if (checkoutForm) {
     const customerPhone = document.getElementById("customerPhone").value.trim();
     const customerAddress = document.getElementById("customerAddress").value.trim();
     const locationLink = document.getElementById("customerLocation")?.value || "";
-    console.log("LOCATION LINK:", locationLink);
     const paymentMethod = document.getElementById("paymentMethod").value;
     const customerNote = document.getElementById("customerNote").value.trim();
     const customerReference = document.getElementById("customerReference") .value.trim();
@@ -825,6 +824,7 @@ if (getLocationBtn) {
 
         if (customerLocation) {
   customerLocation.value = mapsLink;
+  console.log("SALVEI:", customerLocation.value);
   console.log("Link salvo:", customerLocation.value);
 }
 
