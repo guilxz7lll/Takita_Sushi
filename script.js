@@ -598,7 +598,7 @@ Telefone: ${customerPhone}
 📍 *ENTREGA*
 Endereço: ${customerAddress}
 Referência: ${customerReference}
-Localização: ${locationLink || "Não enviada"}
+Localização: ${mapsLink || "Não enviada"}
 
 ━━━━━━━━━━━━━━
 
