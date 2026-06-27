@@ -72,14 +72,14 @@ const products = [
     id: 10,
     name: "Temaki Salmão Frito",
     category: "temaki",
-    price: 34.90,
+    price: 37.90,
     image: "temaki3.png"
   },
   {
     id: 11,
     name: "Temaki Camarão Frito",
     category: "temaki",
-    price: 34.90,
+    price: 37.90,
     image: "temakihot.png"
   },
   {
