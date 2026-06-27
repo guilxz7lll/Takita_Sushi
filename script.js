@@ -784,7 +784,7 @@ if (overlay) {
 }
 
 const customerAddressInput = document.getElementById("customerAddress"); 
-
+let mapsLink2="";
 if (getLocationBtn) {
   getLocationBtn.addEventListener("click", () => {
     console.log("Botão de localização clicado.");
@@ -802,7 +802,7 @@ if (getLocationBtn) {
     }
 
     showToast("Buscando localização...");
-    let mapsLink2="";
+    
 
 
     navigator.geolocation.getCurrentPosition(
@@ -814,7 +814,7 @@ if (getLocationBtn) {
 
         const mapsLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
         console.log(mapsLink)
-        console.log("o código executou até aqui")
+        mapsLink2=mapsLink;
         if (customerLocation) {
           customerLocation.value = mapsLink;
           console.log("Elemento:", customerLocation);
