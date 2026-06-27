@@ -814,7 +814,7 @@ if (getLocationBtn) {
 
         const mapsLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
         console.log(mapsLink)
-
+        console.log("o código executou até aqui")
         if (customerLocation) {
           customerLocation.value = mapsLink;
           console.log("Elemento:", customerLocation);
