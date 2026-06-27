@@ -1,7 +1,7 @@
 // ================= CONFIGURAÇÃO =================
 // Número do WhatsApp do Takita Sushi.
 // Formato: 55 + DDD + número.
-const WHATSAPP_NUMBER = "5592985194693";
+const WHATSAPP_NUMBER = "5592985623962";
 const PIX_KEY = "92985194693";
 // ================= PRODUTOS =================
 const products = [
