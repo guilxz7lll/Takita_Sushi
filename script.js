@@ -782,17 +782,6 @@ if (overlay) {
   overlay.addEventListener("click", closeAllPanels);
 }
 
-if (copyPixBtn) {
-  copyPixBtn.addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(PIX_KEY);
-      showToast("Chave PIX copiada!");
-    } catch {
-      showToast("Chave PIX copiada!");
-    }
-  });
-}
-
 const customerAddressInput = document.getElementById("customerAddress"); 
 
 if (getLocationBtn) {
