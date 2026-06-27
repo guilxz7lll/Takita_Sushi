@@ -546,6 +546,7 @@ if (checkoutForm) {
     const paymentMethod = document.getElementById("paymentMethod").value;
     const customerNote = document.getElementById("customerNote").value.trim();
     const customerReference = document.getElementById("customerReference") .value.trim();
+    console.log("Esse é o location link", locationLink)
 
    let totalValue = cart.reduce((sum, item) => {
   if (typeof item.price !== "number") {
