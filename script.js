@@ -598,7 +598,7 @@ Telefone: ${customerPhone}
 📍 *ENTREGA*
 Endereço: ${customerAddress}
 Referência: ${customerReference}
-Localização: ${mapsLink || "Não enviada"}
+Localização: ${mapsLink2 || "Não enviada"}
 
 ━━━━━━━━━━━━━━
 
@@ -802,6 +802,8 @@ if (getLocationBtn) {
     }
 
     showToast("Buscando localização...");
+    let mapsLink2="";
+
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -810,7 +812,8 @@ if (getLocationBtn) {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
-        var mapsLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
+        const mapsLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
+        mapsLink2=mapsLink;
 
         if (customerLocation) {
           customerLocation.value = mapsLink;
