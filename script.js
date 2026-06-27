@@ -810,7 +810,7 @@ if (getLocationBtn) {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
-        const mapsLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
+        var mapsLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
 
         if (customerLocation) {
           customerLocation.value = mapsLink;
