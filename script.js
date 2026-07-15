@@ -660,21 +660,21 @@ const featuredItems = [
     image: "barcaG.png",
     tag: "Destaque",
     name: "G Mista",
-    price: "R$129,90",
+    price: "R$130,0",
     info: "Contém 55 un."
   },
   {
     image: "salmão_hot.png",
     tag: "Mais pedido",
     name: "Hot Holl",
-    price: "R$27,90",
+    price: "R$30,00",
     info: "Philadelphia"
   },
   {
     image: "temaki (1).png",
     tag: "Especial",
     name: "Temaki",
-    price: "R$36,90",
+    price: "R$37,00",
     info: "1 unidade"
   }
 ];
