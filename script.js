@@ -9,7 +9,7 @@ const products = [
     id: 1,
     name: "Hot Holl Philadelphia",
     category: "hot-holl",
-    price: 30.00,
+    price: 25.00,
     image: "salmão_hot.png"
   },
   {
