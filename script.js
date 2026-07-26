@@ -9,7 +9,7 @@ const products = [
     id: 1,
     name: "Hot Holl Philadelphia",
     category: "hot-holl",
-    price: 25.00,
+    price: 30.00,
     image: "salmão_hot.png"
   },
   {
@@ -44,7 +44,7 @@ const products = [
     id: 6,
     name: "Temaki Salmão Cru",
     category: "temaki",
-    price: 37.00,
+    price: 38.00,
     image: "temaki (1).png"
   },
   {
@@ -72,14 +72,14 @@ const products = [
     id: 10,
     name: "Temaki Salmão Frito",
     category: "temaki",
-    price: 38.00,
+    price: 40.00,
     image: "temaki3.png"
   },
   {
     id: 11,
     name: "Temaki Camarão Frito",
     category: "temaki",
-    price: 38.00,
+    price: 40.00,
     image: "temakihot.png"
   },
   {
