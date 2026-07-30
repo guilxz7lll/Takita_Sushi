@@ -589,7 +589,7 @@ totalValue += taxValue;
     const message = `
 🍣 *NOVO PEDIDO - TAKITA SUSHI*
 
-━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 👤 *CLIENTE*
 Nome: ${customerName}
@@ -600,13 +600,13 @@ Endereço: ${customerAddress}
 Referência: ${customerReference}
 Localização: ${mapsLink2 || "Não enviada"}
 
-━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 🛒 *ITENS*
 
 ${orderItems}
 
-━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 💳 *PAGAMENTO*
 Forma: ${paymentMethod}
@@ -617,7 +617,7 @@ ${formatCurrency(taxValue)}
 💰 *TOTAL*
 ${formatCurrency(totalValue)}
 
-━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 📝 *OBSERVAÇÃO*
 ${customerNote || "Nenhuma"}
