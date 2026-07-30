@@ -278,6 +278,18 @@ i[data-lucide] {
   letter-spacing: 1px;
 }
 
+.red-labels {
+  display: inline-block;
+  padding: 7px 14px;
+  margin-bottom: 16px;
+  color: #fff;
+  background: var(--red);
+  font-size: 13px;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 .hero-content h1 {
   max-width: 720px;
   color: #fff;
@@ -3314,6 +3326,19 @@ body.cart-open .cart-items {
   text-transform: uppercase;
 }
 
+.instabtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+}
+
 
   /* BARCA DESTAQUE */
 
@@ -3531,7 +3556,6 @@ body.cart-open .cart-items {
     height: 24px;
     color: var(--red-light);
   }
-}
 
 /* ================= HOME ACTION CARDS DESKTOP ================= */
 
@@ -4975,35 +4999,6 @@ body.cart-open .header {
   gap: 34px;
 }
 
-.quick-action-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-
-  color: #ffffffa6;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.quick-action-circle {
-  width: 72px;
-  height: 72px;
-  display: grid;
-  place-items: center;
-
-  border-radius: 100%;
-  background: rgba(229, 0, 27, 0.803);
-  border: 1.2px solid rgb(0, 0, 0);
-  box-shadow:
-    0 16px 42px rgba(118, 3, 3, 0.669),
-    0 0 30px rgba(196, 0, 23, 0.43);
-  
-
-
-  transition: 0.25s ease;
-}
-
 .location-btn {
   width: 100%;
   min-height: 48px;
@@ -5159,6 +5154,25 @@ body > .toast.active,
   transition: 0.25s ease;
 }
 
+.instabg {
+   width: 62px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+
+  border-radius: 100%;
+  background: rgba(229, 0, 27, 0.803);
+  border: 1.2px solid rgb(0, 0, 0);
+  box-shadow:
+    0 16px 42px rgba(118, 3, 3, 0.669),
+    0 0 30px rgba(196, 0, 23, 0.43);
+  
+
+
+  transition: 0.25s ease;
+}
+
+
 .location-btn {
   width: 100%;
   min-height: 48px;
@@ -5222,4 +5236,49 @@ body > .toast.active,
 
 #copyPixBtn:hover {
   background: #d60909c3;
+}
+
+/* div que cobre a tela inteira */
+.aviso {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center; /* horizontal */
+  align-items: center;     /* vertical */
+
+  background: rgba(0, 0, 0, 0.753); /* fundo escuro */
+  z-index: 9999;
+}
+
+/* caixinha do conteúdo */
+.caixaaviso {
+  padding: 0px;
+  border-radius: 20px;
+  border: #ffffff7f 1px solid;
+  overflow: hidden;
+}
+
+/* imagem */
+.imgaviso {
+  max-width: 90vw;
+  max-height: 90vh;
+
+}
+
+#bloqueio {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0);
+  
+  display: none;
+  z-index: 9999;
+  pointer-events: all;
 }
