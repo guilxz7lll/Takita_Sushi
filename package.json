@@ -1,0 +1,15 @@
+{
+  "name": "takita-sushi",
+  "version": "1.0.0",
+  "description": "Cardápio digital/Automação de pedidos em HTML, java, e css.",
+  "scripts": {
+    "dev": "echo 'Static HTML site - open index.html in browser'",
+    "build": "echo 'No build step required for static site'"
+  },
+  "keywords": ["sushi", "delivery", "restaurant"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  }
+}
