@@ -23,7 +23,7 @@ const products = [
     id: 3,
     name: "Uramaki Salmão",
     category: "hossomaki",
-    price: 30.00,
+    price: 35.00,
     image: "uramaki.png"
   },
   {
@@ -58,14 +58,14 @@ const products = [
     id: 8,
     name: "Dog-Hot Salmão",
     category: "hot-holl",
-    price: 35.00,
+    price: 38.00,
     image: "dog.png"
   },
   {
     id: 9,
     name: "Dog-Hot Camarão",
     category: "hot-holl",
-    price: 35.00,
+    price: 38.00,
     image: "dog.png"
   },
   {
@@ -93,21 +93,21 @@ const products = [
     id: 13,
     name: "M Mista",
     category: "barca",
-    price: 80.00,
+    price: 90.00,
     image: "barcaG.png"
   },
   {
     id: 14,
     name: "G mista",
     category: "barca",
-    price: 130.00,
+    price: 150.00,
     image: "barcaG.png"
   },
   {
     id: 15,
     name: "Barca G Hot",
     category: "barca",
-    price: 100.00,
+    price: 120.00,
     image: "barcaG.png"
   },
   {
@@ -139,24 +139,10 @@ const products = [
     image: "shoyu.png"
   },
   {
-    id: 20,
-    name: "Uramaki Premium Salmão",
-    category: "hossomaki",
-    price: 35.00,
-    image: "uramakipremium.png"
-  },
-  {
-    id: 21,
-    name: "Uramaki Premium Camarão",
-    category: "hossomaki",
-    price: 35.00,
-    image: "uramakipremium.png"
-  },
-  {
     id: 22,
     name: "Barca M Hot",
     category: "barca",
-    price: 80.00,
+    price: 90.00,
     image: "barcaG.png"
   },
   
@@ -660,7 +646,7 @@ const featuredItems = [
     image: "barcaG.png",
     tag: "Destaque",
     name: "G Mista",
-    price: "R$130,0",
+    price: "R$150,0",
     info: "Contém 55 un."
   },
   {
@@ -674,7 +660,7 @@ const featuredItems = [
     image: "temaki (1).png",
     tag: "Especial",
     name: "Temaki",
-    price: "R$37,00",
+    price: "R$38,00",
     info: "1 unidade"
   }
 ];
