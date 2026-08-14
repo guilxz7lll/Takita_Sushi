@@ -3321,7 +3321,7 @@ body.cart-open .cart-items {
   align-items: center;
   gap: 10px;
 
-  color: #fff;
+  color: #ffffff00;
   text-align: center;
   text-transform: uppercase;
 }
@@ -5130,7 +5130,7 @@ body > .toast.active,
   align-items: center;
   gap: 10px;
 
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   text-transform: uppercase;
 
@@ -5141,13 +5141,14 @@ body > .toast.active,
   height: 72px;
   display: grid;
   place-items: center;
+  align-items: center;
 
   border-radius: 100%;
-  background: rgba(229, 0, 27, 0.803);
+  background: rgba(229, 0, 27, 0);
   border: 1.2px solid rgb(0, 0, 0);
   box-shadow:
-    0 16px 42px rgba(118, 3, 3, 0.669),
-    0 0 30px rgba(196, 0, 23, 0.43);
+    0 16px 42px rgba(0, 0, 0, 0),
+    0 0 30px rgba(0, 0, 0, 0);
   
 
 
