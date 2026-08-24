@@ -30,14 +30,14 @@ const products = [
     id: 4,
     name: "Uramaki Camarão",
     category: "hossomaki",
-    price: 30.00,
+    price: 35.00,
     image: "uramakicamarão.png"
   },
   {
     id: 5,
     name: "Hossomaki Salmão",
     category: "hossomaki",
-    price: 30.00,
+    price: 35.00,
     image: "hossomaki.png"
   },
   {
