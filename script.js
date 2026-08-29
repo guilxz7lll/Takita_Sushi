@@ -105,7 +105,7 @@ const products = [
   },
   {
     id: 15,
-    name: "Barca G Hot",
+    name: "Barca Hot",
     category: "barca",
     price: 120.00,
     image: "barcaG.png"
