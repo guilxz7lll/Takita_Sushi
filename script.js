@@ -44,7 +44,7 @@ const products = [
     id: 6,
     name: "Temaki Salmão Cru",
     category: "temaki",
-    price: 38.00,
+    price: 40.00,
     image: "temaki (1).png"
   },
   {
